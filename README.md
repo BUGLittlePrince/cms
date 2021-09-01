@@ -26,4 +26,18 @@ npm run lint
 
 ### Customize configuration
 
+### Project commit
+
+```
+git add .
+npm run commit
+git push
+```
+
+### Code formatting (Format your code before submitting it)
+
+```
+npm run prettier
+```
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
