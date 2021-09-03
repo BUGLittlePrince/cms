@@ -14,7 +14,16 @@ app.use(store)
 
 app.mount('#app')
 
-hhRequest.request({
-  url: '/home/multidata',
-  method: 'GET'
-})
+interface DataType {
+  data: any
+  returnCode: string
+  success: boolean
+}
+hhRequest
+  .get<DataType>({
+    url: '/home/multidata',
+    isShowLoading: false
+  })
+  .then((res) => {
+    console.log(res.data)
+  })
