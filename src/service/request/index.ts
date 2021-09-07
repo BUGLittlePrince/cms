@@ -89,7 +89,7 @@ class HHRequest {
           if (config.interceptors?.responseInterceptor) {
             res = config.interceptors.responseInterceptor(res)
           }
-          console.log(res)
+          // console.log(res)
 
           // 2.将showLoading设置为true，这样就不会影响下一次请求
           this.isShowLoading = DEAFAULT_LOADING

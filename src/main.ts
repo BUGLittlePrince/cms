@@ -1,9 +1,11 @@
 import { createApp } from 'vue'
+import { globalRegister } from './global'
+import { setupStore } from '@/store/index'
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import hhRequest from './service'
-import { globalRegister } from './global'
+import 'normalize.css'
+import './assets/css/index.less'
 
 const app = createApp(App)
 
@@ -11,19 +13,7 @@ const app = createApp(App)
 app.use(globalRegister)
 app.use(router)
 app.use(store)
+// 防止浏览器刷新以后，vuex中缓存的数据清空
+setupStore()
 
 app.mount('#app')
-
-interface DataType {
-  data: any
-  returnCode: string
-  success: boolean
-}
-hhRequest
-  .get<DataType>({
-    url: '/home/multidata',
-    isShowLoading: false
-  })
-  .then((res) => {
-    console.log(res.data)
-  })

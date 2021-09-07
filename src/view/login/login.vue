@@ -1,18 +1,28 @@
 <template>
-  <div>
-    <h2>login : {{ $store.state.name }}</h2>
-    <el-button type="success">登录</el-button>
-    <el-button type="primary">登录</el-button>
+  <div class="login">
+    <login-panel></login-panel>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import LoginPanel from './cpns/login-panel.vue'
 
 export default defineComponent({
-  components: {},
+  components: {
+    LoginPanel
+  },
   name: 'Login'
 })
 </script>
 
-<style scoped></style>
+<style lang="less" scoped>
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background: url('../../assets/img/login-bg.svg');
+}
+</style>
