@@ -8,12 +8,20 @@ const routes: RouteRecordRaw[] = [
     redirect: '/login'
   },
   {
+    name: 'login',
     path: '/login',
-    component: () => import('@/view/login/login.vue')
+    component: () => import('@/views/login/login.vue')
   },
   {
+    name: 'main',
     path: '/main',
-    component: () => import('@/view/main/main.vue')
+    component: () => import('@/views/main/main.vue')
+  },
+  {
+    // 当用户输入了不存在的路由页面时候，代替页面
+    name: 'not-found',
+    path: '/:pathMatch(.*)*',
+    component: () => import('@/views/main/not-found/not-found.vue')
   }
 ]
 

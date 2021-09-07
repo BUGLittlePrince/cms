@@ -7,6 +7,7 @@ import { IAccount } from '@/service/login/type'
 import { Module } from 'vuex'
 import { IRootState } from '../types'
 import { ILoginState } from './types'
+import { mapMenusToRoutes } from '@/utils/map-menus'
 import localCache from '@/utils/cache'
 import router from '@/router'
 
@@ -29,6 +30,14 @@ const loginModule: Module<ILoginState, IRootState> = {
     },
     changeUserMenus(state, userMenus: any) {
       state.userMenus = userMenus
+
+      // userMenus => routes
+      const routes = mapMenusToRoutes(userMenus)
+
+      // 将routes => router.main.children
+      routes.forEach((route) => {
+        router.addRoute('main', route)
+      })
     }
   },
   actions: {
@@ -71,10 +80,10 @@ const loginModule: Module<ILoginState, IRootState> = {
       if (userMenus) {
         commit('changeUserMenus', userMenus)
       }
-    },
-    phoneLoginAction({ commit }, payload: any) {
-      console.log('phoneLoginAction', payload)
     }
+    // phoneLoginAction({ commit }, payload: any) {
+    //   console.log('phoneLoginAction', payload)
+    // }
   }
 }
 
