@@ -1,5 +1,6 @@
 import hhRequest from '../index'
-import { IAccount, IDataType, ILoginResult } from './type'
+import { IAccount, ILoginResult } from './type'
+import { IDataType } from '../types'
 
 // 接口
 enum loginApi {
